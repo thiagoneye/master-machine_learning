@@ -40,7 +40,7 @@ Some of the fundamental algorithms and models studied in this field include:
 - `docs/` – lecture notes, papers, summaries, and presentations  
 - `exercises/` – exercise lists from the course  
 - `project/` – final project (ML applied to a transport phenomenon problem, to be defined)  
-- `results/` – plots and figures generated from experiments  
+- `results/` – plots and figures generated from analyses  
 - `src/` – source code implementations for the studied methods  
 
 ---
@@ -68,7 +68,7 @@ The main libraries used are:
 - SciPy
 - pyGAM
 
-You can install them using a requirements.txt file (if provided) or individually via pip:
+You can install them individually via pip:
 
 ```bash
 pip install numpy pandas scikit-learn matplotlib seaborn scipy pygam
