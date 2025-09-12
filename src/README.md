@@ -5,6 +5,7 @@ Description of existing codes.
 * **Regression:**
     * `linear_regression.ipynb`: Comparison of linear regression models; residual analysis.
     * `nonlinear_regression.ipynb`: Comparison of nonlinear regression models.
+    * `k_nearest_neighbors.ipynb`: Implementation of the KNN algorithm for curve fitting.
     * `support_vector_machine.ipynb`: 
 * **Classification:**
     * `.ipynb`: 
