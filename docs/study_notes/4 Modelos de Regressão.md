@@ -1,13 +1,3 @@
-# Sumário
-
-- [[#Regressão Linear]]
-- [[#Otimização com Gradiente Descendente]]
-- [[#Regularização]]
-- [[#Métricas de Avaliação]]
-- [[#Regressão Multivariada]]
-- [[#Regressão Não-Linear]]
-
---- 
 # Regressão Linear
 
 A regressão linear é uma das técnicas mais fundamentais e amplamente utilizadas no campo da estatística e do machine learning. Seu principal objetivo é modelar e analisar a relação entre uma variável dependente (também chamada de resposta ou alvo) e uma ou mais variáveis independentes (conhecidas como preditoras ou explicativas). A essência da técnica reside em encontrar a linha reta que melhor se ajusta aos dados, permitindo assim fazer previsões.
@@ -70,7 +60,6 @@ O MQO é o método padrão por ser matematicamente conveniente e eficiente sob a
 3. **Regressão Bayesiana** Em vez de encontrar um único valor "ótimo" para cada coeficiente (β), a abordagem bayesiana trata os coeficientes como variáveis aleatórias. Ela usa os dados para atualizar uma crença prévia sobre os parâmetros, resultando em uma distribuição de probabilidade posterior para cada um. Isso permite uma quantificação mais rica da incerteza do modelo.
 4. **Métodos de Otimização (Alternativa Computacional)** Para conjuntos de dados gigantescos, calcular a solução exata do MQO (através da "equação normal") pode ser computacionalmente inviável. Nesses casos, algoritmos iterativos como o **Gradiente Descendente (Gradient Descent)** são usados para encontrar os valores dos coeficientes. Embora o objetivo seja o mesmo (minimizar a soma dos erros ao quadrado), a abordagem para chegar lá é diferente.
 
----
 # Otimização com Gradiente Descendente
 
 | Característica                     | Método dos Mínimos Quadrados Ordinários (MQO)                                                                     | Gradiente Descendente                                                                                         |
@@ -85,7 +74,6 @@ O MQO é o método padrão por ser matematicamente conveniente e eficiente sob a
 | **Precisão**                       | Encontra a solução **exata** e ótima de uma só vez.                                                               | Encontra uma solução **aproximada**, que se aproxima do ótimo a cada iteração.                                |
 | **Uso Online**                     | Não pode ser usado em cenários de _online learning_ (dados chegam em tempo real).                                 | Pode ser usado com _online learning_ (especialmente a versão Estocástica - SGD).                              |
 
----
 # Regularização
 
 A regularização é uma técnica usada para evitar o **overfitting**. O overfitting acontece quando um modelo de machine learning se ajusta _tão bem_ aos dados de treinamento que acaba "decorando" as informações, em vez de aprender os padrões gerais. Isso faz com que o modelo tenha um desempenho ruim com dados novos que ele nunca viu antes.
@@ -187,12 +175,12 @@ As principais vantagens da Regressão LASSO são:
 
 Devido a essas características, a LASSO é especialmente útil em campos como bioinformática (análise de genes), finanças e economia, onde se deseja não apenas prever, mas também entender quais fatores são os mais determinantes.
 
----
 # Métricas de Avaliação
 
 Após construir um modelo de regressão, a etapa crucial seguinte é avaliar sua performance. Para isso, utilizamos métricas de avaliação que quantificam o quão precisas são as previsões do modelo em comparação com os valores reais.
 
 A escolha da métrica correta depende do contexto do problema e do que se considera um "bom" resultado. Abaixo estão as métricas mais importantes e utilizadas.
+
 ## 1. Erro Absoluto Médio (MAE - Mean Absolute Error)
 
 É uma das métricas mais simples e intuitivas. O MAE calcula a média das diferenças absolutas entre os valores previstos e os valores reais.
@@ -273,7 +261,6 @@ O R² Ajustado corrige a principal falha do R², penalizando a adição de vari�
 
 A melhor prática é nunca confiar em uma única métrica. Analise um conjunto delas para ter uma visão completa e robusta da performance do seu modelo.
 
----
 # Regressão Multivariada
 
 Na estatística formal, a Regressão Multivariada (ou *Multivariate Multiple Regression*) é um modelo mais avançado que lida com:
@@ -288,7 +275,6 @@ O Modelo Em vez de uma única equação, temos um sistema de equações, uma par
 **Exemplo Prático:**
 Prever simultaneamente a **taxa de inflação (`Y₁`)** e a **taxa de desemprego (`Y₂`)** com base no **crescimento do PIB (`X₁`)**. Como inflação e desemprego estão relacionados, modelá-los juntos pode ser mais eficaz.
 
----
 # Regressão Não-Linear
 
 A regressão não linear abrange uma vasta gama de modelos que são utilizados quando a relação entre as variáveis independentes ($X$) e a dependente ($Y$) não pode ser adequadamente descrita por uma linha reta.

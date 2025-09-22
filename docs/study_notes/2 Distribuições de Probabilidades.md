@@ -1,4 +1,4 @@
-# Distribuições de Probabilidades: O que são e os principais tipos
+# Distribuições de Probabilidades
 
 Em estatística e probabilidade, uma **distribuição de probabilidade**, é um modelo matemático que descreve a frequência com que os diferentes valores possíveis de uma variável aleatória ocorrem. Em outras palavras, ela nos mostra o padrão de variação de um conjunto de dados, indicando quais resultados são mais ou menos prováveis.
 
@@ -6,7 +6,6 @@ A compreensão das distribuições é fundamental para a análise de dados, pois
 
 As distribuições de probabilidades são categorizadas principalmente em dois tipos, com base na natureza da variável em estudo: **distribuições discretas** e **distribuições contínuas**.
 
----
 ## Distribuições de Probabilidades Discretas
 
 Uma variável discreta é aquela que pode assumir um número finito ou contável de valores distintos. Por exemplo, o número de caras ao lançar uma moeda três vezes (pode ser 0, 1, 2 ou 3) ou o número de e-mails que você recebe em uma hora. As principais distribuições discretas são:
@@ -55,7 +54,6 @@ A distribuição Qui-Quadrado é derivada da distribuição normal e é amplamen
 
 A escolha da distribuição correta para modelar um conjunto de dados é um passo crucial na análise estatística, pois as conclusões tiradas dependem fortemente do modelo de probabilidade assumido.
 
---- 
 # A Transformação Box-Cox
 
 A Transformação Box-Cox é uma poderosa ferramenta estatística utilizada para converter dados não-normais em um conjunto de dados com distribuição aproximadamente normal. Essa transformação é fundamental em diversas áreas da análise de dados, pois muitos modelos estatísticos, como a regressão linear e a análise de variância (ANOVA), pressupõem que os dados sigam uma distribuição normal. Ao estabilizar a variância e reduzir a assimetria dos dados, a transformação Box-Cox permite a aplicação correta e eficaz desses modelos, levando a conclusões mais robustas e precisas.
