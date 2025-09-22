@@ -26,15 +26,18 @@ Para encontrar a melhor divisão, o algoritmo busca maximizar a "pureza" dos nó
 
 Usada pelo algoritmo **CART (Classification and Regression Trees)**. Mede a probabilidade de um elemento aleatório do conjunto ser classificado incorretamente. A impureza é 0 quando o nó é perfeitamente puro.
 A fórmula para um dado nó é:
+
 $$
 Gini = \sum_{k=1}^{K} p_k (1 - p_k)
 $$
+
 Onde $p_k$ é a proporção de amostras da classe $k$ no nó.
 
 #### 2. Entropia e Ganho de Informação (Entropy and Information Gain)
 
 Usada pelos algoritmos **ID3** e **C4.5**. A entropia é uma medida de desordem ou incerteza. O algoritmo escolhe a divisão que proporciona o maior **Ganho de Informação**, que é a redução na entropia após a divisão.
 A fórmula da entropia para um nó é:
+
 $$
 H = - \sum_{k=1}^{K} p_k \log_2(p_k)
 $$
@@ -98,6 +101,7 @@ Primeiro, calculamos o valor previsto para este nó, que é a média dos valores
 $$
 \hat{y}_m = \frac{1}{N_m} \sum_{i \in R_m} y_i
 $$
+
 Onde:
 - $\hat{y}_m$ é a predição para o nó `m`.
 - $N_m$ é o número de amostras no nó `m`.
