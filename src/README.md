@@ -34,5 +34,5 @@ Description of existing codes.
     * `.ipynb`: 
 * **Others:**
     * `probability_distributions.ipynb`: Probability distributions (discrete and continuous); Box-Cox transformation.
-    * `maximum_likelihood_estimation.ipynb`: 
+    * `maximum_likelihood_estimation.ipynb`: Comparison of analytical and numerical methods.
     * `ensemble_methods.ipynb`: 
