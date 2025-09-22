@@ -317,3 +317,121 @@ Esta é a aplicação mais comum no mundo dos negócios: "Por que o cliente X te
 
 * **Profundidade Excessiva:** Árvores muito profundas podem se tornar uma "selva de regras", difíceis de interpretar como um todo.
 * **Instabilidade:** Pequenas mudanças nos dados de treino podem gerar uma árvore completamente diferente. Isso significa que a "explicação" para um mesmo caso pode mudar se o modelo for treinado novamente.
+
+## Exemplo Completo da Árvore de Decisão: Da Construção à Classificação
+
+Esta seção apresenta uma análise completa e detalhada de como um algoritmo de Árvore de Decisão funciona. O processo é dividido em duas fases principais:
+
+1.  **Fase de Construção (Treinamento):** Onde o modelo aprende as regras a partir de um conjunto de dados.
+2.  **Fase de Classificação (Predição):** Onde a árvore treinada é usada para classificar uma nova amostra.
+
+### Fase 1: Construção da Árvore (Treinamento)
+
+Nesta fase, o objetivo é criar a melhor estrutura de "perguntas" em cascata para separar os dados de forma eficiente.
+
+#### Etapa 0: O Cenário (O Conjunto de Dados)
+
+Utilizaremos um conjunto de dados com 10 amostras, 4 características e 3 classes de dispositivos eletrônicos: **Notebook (0)**, **Tablet (1)** e **Celular (2)**.
+
+| Amostra | F0: Tela (pol) | F1: Peso (g) | F2: RAM (GB) | F3: Bateria (mAh) | **Classe** | **Dispositivo** |
+| :--- | :--- | :--- | :--- | :--- | :--- |:--- |
+| A0 | 15.6 | 1800 | 8 | 5000 | **0** | Notebook |
+| A1 | 14.0 | 1200 | 16 | 6000 | **0** | Notebook |
+| A2 | 13.3 | 950 | 8 | 4500 | **0** | Notebook |
+| A3 | 11.0 | 700 | 4 | 8000 | **1** | Tablet |
+| A4 | 10.1 | 650 | 6 | 7500 | **1** | Tablet |
+| A5 | 12.9 | 720 | 8 | 9000 | **1** | Tablet |
+| A6 | 6.7 | 210 | 8 | 5000 | **2** | Celular |
+| A7 | 6.1 | 180 | 4 | 4000 | **2** | Celular |
+| A8 | 6.9 | 240 | 12 | 5500 | **2** | Celular |
+| A9 | 6.5 | 190 | 6 | 4500 | **2** | Celular |
+
+**Distribuição Inicial:** {Notebook: 3, Tablet: 3, Celular: 4} -> Total de 10 amostras.
+
+#### Etapa 1: Ponto de Partida - Entropia do Nó Raiz
+
+Iniciamos com todas as 10 amostras no nó raiz. O primeiro passo é medir a "impureza" ou "desordem" inicial deste nó usando a Entropia de Shannon.
+
+**Cálculo da Entropia do Nó Raiz (Pai):**
+A fórmula da entropia é:
+$$H(S) = - \sum_{i=1}^{c} p_i \log_2(p_i)$$
+
+1.  **Proporções (`p_i`):**
+    * $p_{Notebook} = 3/10 = 0.3$
+    * $p_{Tablet} = 3/10 = 0.3$
+    * $p_{Celular} = 4/10 = 0.4$
+
+2.  **Cálculo:**
+    $$H(Raiz) = - [ (0.3 \cdot \log_2(0.3)) + (0.3 \cdot \log_2(0.3)) + (0.4 \cdot \log_2(0.4)) ]$$
+    $$H(Raiz) = - [ (0.3 \cdot -1.737) + (0.3 \cdot -1.737) + (0.4 \cdot -1.322) ]$$
+    $$H(Raiz) = - [ -0.521 - 0.521 - 0.529 ] \approx 1.571$$
+
+> A entropia inicial do conjunto de dados é **1.571**. Este é o valor que o algoritmo tentará reduzir a cada divisão.
+
+#### Etapa 2: A Busca Exaustiva pela Melhor Divisão
+
+O algoritmo agora busca a divisão que maximiza o **Ganho de Informação**, definido como: `Ganho = H(Pai) - H_ponderada(Filhos)`.
+
+* **Variáveis de controle inicializadas:**
+    * `best_gain = -1.0`
+    * `best_split_idx = None`
+    * `best_split_thresh = None`
+
+##### Análise da Característica F1: "Peso" (Exemplo Detalhado)
+
+Após testar outras características com ganhos menores, vamos analisar a F1 ("Peso"). O algoritmo testa vários limiares. Vamos analisar o limiar **`Peso <= 300`**.
+
+1.  **Divisão:**
+    * **Filho Esquerda (Peso <= 300):** 4 amostras com rótulos `[2, 2, 2, 2]` -> {Celular: 4}. **(Nó Puro!)**
+    * **Filho Direita (Peso > 300):** 6 amostras com rótulos `[0, 0, 0, 1, 1, 1]` -> {Notebook: 3, Tablet: 3}.
+
+2.  **Entropia dos Filhos:**
+    * $H(Esquerda) = 0$ (nós puros têm entropia zero).
+    * $H(Direita) = -[(3/6 \cdot \log_2(3/6)) + (3/6 \cdot \log_2(3/6))] = 1.0$
+
+3.  **Entropia Ponderada Final:**
+    * $H_{pond} = (4/10 \cdot H(Esquerda)) + (6/10 \cdot H(Direita))$
+    * $H_{pond} = (0.4 \cdot 0) + (0.6 \cdot 1.0) = 0.6$
+
+4.  **Cálculo do Ganho de Informação:**
+    * `Ganho = H(Raiz) - H_{pond} = 1.571 - 0.6 = 0.971`
+
+> **Atualização:** Como `0.971` é o maior ganho encontrado até agora, as variáveis são atualizadas: `best_gain = 0.971`, `best_split_idx = 1`, `best_split_thresh = 300`.
+
+#### Etapa 3: A Decisão Final e a Primeira Divisão
+
+Após testar todas as combinações, a divisão com o maior ganho foi a da Característica "Peso" com limiar 300. A árvore começa a ser formada.
+
+#### Etapa 4: Recursão - Construindo o Próximo Nível
+
+O processo recomeça para o nó da direita, que agora é o novo "pai".
+
+* **Novo Nó Pai:** Contém 6 amostras: {Notebook: 3, Tablet: 3}.
+* **Entropia do Novo Nó:** $H = 1.0$.
+
+O algoritmo buscará a melhor divisão para estas 6 amostras. Suponha que ele encontre que `Tela <= 12.0` é a melhor regra, com um `Ganho = 0.46`. A árvore se expande:
+
+O processo continua até que todos os nós sejam puros ou outro critério de parada seja atingido.
+
+### Fase 2: Classificação de uma Nova Amostra (Predição)
+
+Com a árvore treinada, podemos classificar um novo dispositivo.
+
+**Nova Amostra:** `{Tela: 14.5, Peso: 1300g, RAM: 8GB, Bateria: 5200mAh}`
+
+O processo é uma simples travessia pela árvore:
+
+1.  **Começar na Raiz:**
+    * **Pergunta:** `Peso <= 300g?`
+    * **Análise:** `1300 <= 300` é **FALSO**.
+    * **Ação:** Seguir pelo ramo da **direita (NÃO)**.
+
+2.  **Percorrer o Próximo Nó:**
+    * **Pergunta:** `Tela <= 12.0 polegadas?`
+    * **Análise:** `14.5 <= 12.0` é **FALSO**.
+    * **Ação:** Seguir pelo ramo da **direita (NÃO)**.
+
+3.  **Chegar a um Nó Folha:**
+    * Seguindo este caminho, chegaríamos a um nó que, após mais divisões, conteria majoritariamente amostras da classe "Notebook".
+
+> **Predição Final:** A classificação para a nova amostra é **Notebook (Classe 0)**.

@@ -67,3 +67,7 @@ You can install them individually via pip:
 ```bash
 pip install numpy pandas scikit-learn matplotlib seaborn scipy pygam
 ```
+
+## Authorship of the Material
+
+Most of the material (study notes and codes) in the repository was developed using LLM.

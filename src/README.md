@@ -9,6 +9,7 @@ Description of existing codes.
     * `support_vector_machine.ipynb`: 
 * **Classification:**
     * `decision_tree.ipynb`: Application and Interpretability.
+    * `decision_tree.py`: Algorithm implementation.
     * `.ipynb`: 
     * `.ipynb`: 
     * `.ipynb`: 
