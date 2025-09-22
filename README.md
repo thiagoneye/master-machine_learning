@@ -3,8 +3,6 @@
 This repository was created as part of the **Machine Learning course** in the Master’s program in Computer Science.  
 It includes datasets, exercises, lecture materials, implementations, and a final project focused on applying machine learning to a problem related to transport phenomena.  
 
----
-
 ## What is Machine Learning?
 
 Machine Learning (ML) is a subfield of Artificial Intelligence that develops algorithms capable of learning patterns from data and making predictions or decisions without being explicitly programmed.  
@@ -32,8 +30,6 @@ Some of the fundamental algorithms and models studied in this field include:
 - Principal Component Analysis (PCA)
 - Artificial Neural Networks (ANN) and Deep Learning
 
----
-
 ## Repository Structure
 
 - `data/` – datasets for experiments and analyses  
@@ -42,8 +38,6 @@ Some of the fundamental algorithms and models studied in this field include:
 - `project/` – final project (ML applied to a transport phenomenon problem, to be defined)  
 - `results/` – plots and figures generated from analyses  
 - `src/` – source code implementations for the studied methods  
-
----
 
 ## Getting Started
 
