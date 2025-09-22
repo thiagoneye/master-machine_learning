@@ -8,7 +8,7 @@ Description of existing codes.
     * `k_nearest_neighbors.ipynb`: Implementation of the KNN algorithm for curve fitting.
     * `support_vector_machine.ipynb`: 
 * **Classification:**
-    * `.ipynb`: 
+    * `decision_tree.ipynb`: Application and Interpretability.
     * `.ipynb`: 
     * `.ipynb`: 
     * `.ipynb`: 
