@@ -435,3 +435,69 @@ O processo é uma simples travessia pela árvore:
     * Seguindo este caminho, chegaríamos a um nó que, após mais divisões, conteria majoritariamente amostras da classe "Notebook".
 
 > **Predição Final:** A classificação para a nova amostra é **Notebook (Classe 0)**.
+
+## Variantes do Algoritmo de Árvore de Decisão
+
+Existem diversas variantes e evoluções do algoritmo de Árvore de Decisão. Cada uma foi desenvolvida para resolver limitações da versão anterior, como a forma de escolher a melhor divisão, o tratamento de diferentes tipos de dados e o controle do superajuste (overfitting).
+
+### 1. ID3 (Iterative Dichotomiser 3)
+
+É um dos algoritmos mais antigos e fundamentais. Foi o precursor de muitas outras variantes.
+
+* **Critério de Divisão:** Utiliza o **Ganho de Informação (Information Gain)**, baseado em Entropia. Ele escolhe o atributo que fornece a maior redução na incerteza (entropia) sobre as classes.
+* **Características Principais:**
+    * Funciona apenas com atributos **categóricos**. Ele não lida nativamente com dados numéricos contínuos.
+    * Tende a favorecer atributos com um grande número de valores distintos, o que pode não levar à melhor árvore.
+    * Não possui um mecanismo de poda (*pruning*), o que o torna muito suscetível ao overfitting.
+
+### 2. C4.5
+
+É a evolução direta do ID3, criada pelo mesmo autor (Ross Quinlan) para superar suas principais limitações.
+
+* **Critério de Divisão:** Utiliza o **Ganho de Informação Normalizado (Gain Ratio)**. Essa métrica ajusta o Ganho de Informação para penalizar atributos com muitos valores, resolvendo uma das maiores falhas do ID3.
+* **Características Principais:**
+    * Lida tanto com atributos **categóricos quanto contínuos**. Para os contínuos, ele encontra um ponto de corte ideal para criar uma divisão binária.
+    * Consegue tratar **dados faltantes**, atribuindo probabilidades a diferentes caminhos na árvore.
+    * Implementa a **poda pós-construção (post-pruning)**, uma técnica que remove galhos da árvore após ela ter sido totalmente construída, a fim de reduzir o overfitting e melhorar a generalização.
+
+### 3. CART (Classification and Regression Trees)
+
+É talvez a variante mais popular e a mais implementada em bibliotecas modernas, como o scikit-learn. Como o nome sugere, é projetado tanto para classificação quanto para regressão.
+
+* **Critério de Divisão:**
+    * **Classificação:** Utiliza o **Índice de Gini (Gini Impurity)**, que é computacionalmente mais eficiente que a Entropia, pois não exige cálculos de logaritmo.
+    * **Regressão:** Utiliza a **Redução de Variância**, buscando a divisão que minimiza a variância dos valores nos nós filhos.
+* **Características Principais:**
+    * Constrói exclusivamente **árvores binárias**, ou seja, cada nó se divide em exatamente dois filhos.
+    * Lida com dados categóricos e contínuos.
+    * Utiliza um método de poda sofisticado chamado **Cost-Complexity Pruning**, que poda a árvore com base em um parâmetro de complexidade.
+
+### 4. CHAID (Chi-squared Automatic Interaction Detection)
+
+Esta variante tem uma abordagem estatística mais formal para a criação de divisões.
+
+* **Critério de Divisão:** Utiliza o **teste estatístico Qui-quadrado ($\chi^2$)** para determinar a melhor divisão. Ele mede a significância da associação entre os atributos e a variável alvo.
+* **Características Principais:**
+    * Pode criar divisões com **mais de dois galhos (árvores não binárias)**. Por exemplo, se um atributo categórico como "Região" tiver os valores "Norte", "Sul" e "Nordeste", o CHAID pode criar um nó com três galhos.
+    * É muito utilizado em marketing e pesquisa de ciências sociais por sua interpretabilidade.
+    * Não necessita de poda; a parada da árvore é determinada pela significância estatística.
+
+### 5. MARS (Multivariate Adaptive Regression Splines)
+
+Embora não seja uma "árvore" no sentido tradicional, o MARS é frequentemente visto como um parente próximo. Ele usa divisões semelhantes às das árvores para modelar não-linearidades nos dados.
+
+* **Critério de Divisão:** Em vez de criar galhos, o MARS cria **funções de base lineares por partes (splines)**. Cada "nó" corresponde a um ponto de inflexão onde o comportamento da função muda.
+* **Características Principais:**
+    * É primariamente um modelo de **regressão**.
+    * Excelente para capturar relações complexas e não-lineares nos dados, produzindo um modelo que é mais suave e contínuo que uma árvore de regressão padrão.
+    * O processo de construção envolve uma fase de avanço (adicionando termos) e uma fase de retrocesso (removendo termos menos importantes), que é análoga à poda.
+
+### Tabela Resumo
+
+| Variante | Critério de Divisão (Classificação) | Tipo de Árvore | Lida com Dados Contínuos? | Poda (Pruning)? |
+| :--- | :--- | :--- | :--- | :--- |
+| **ID3** | Ganho de Informação | Multi-galho | Não | Não |
+| **C4.5** | Ganho Normalizado | Multi-galho | Sim | Sim (Pós-poda) |
+| **CART** | Índice de Gini | Binária | Sim | Sim (Cost-Complexity) |
+| **CHAID** | Teste Qui-quadrado | Multi-galho | Sim | Não (usa parada estatística) |
+| **MARS** | (Modelo de Regressão) | Funções Spline | Sim | Sim (Fase de retrocesso) |

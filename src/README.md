@@ -10,7 +10,7 @@ Description of existing codes.
 * **Classification:**
     * `decision_tree.ipynb`: Application and Interpretability.
     * `decision_tree.py`: Algorithm implementation.
-    * `.ipynb`: 
+    * `random_forest.ipynb`: Application of the algorithm.
     * `.ipynb`: 
     * `.ipynb`: 
     * `.ipynb`: 

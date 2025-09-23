@@ -70,4 +70,4 @@ pip install numpy pandas scikit-learn matplotlib seaborn scipy pygam
 
 ## Authorship of the Material
 
-Most of the material (study notes and codes) in the repository was developed using LLM.
+Most of the material (study notes and codes) in the repository was developed with the help of LLMs (ChatGPT and Gemini).
