@@ -31,7 +31,7 @@ Após construir $B$ árvores ($f_1, f_2, ..., f_B$), a predição para uma nova 
 
 * **Classificação:** A predição final é a classe que recebe o maior número de votos (moda).
 
-$$ \hat{C}_{\text{rf}}(x) = \text{majority\_vote}\{f_1(x), f_2(x), ..., f_B(x)\} $$
+$$ \hat{C}_{rf}(x) = majority_{vote}\{f_1(x), f_2(x), ..., f_B(x)\} $$
 
 * **Regressão:** A predição final é a média das predições de todas as árvores.
 

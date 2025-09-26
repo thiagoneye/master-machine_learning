@@ -6,7 +6,7 @@ Description of existing codes.
     * `linear_regression.ipynb`: Comparison of linear regression models; residual analysis.
     * `nonlinear_regression.ipynb`: Comparison of nonlinear regression models.
     * `k_nearest_neighbors.ipynb`: Implementation of the KNN algorithm for curve fitting.
-    * `support_vector_machine.ipynb`: 
+    * `.ipynb`: 
 * **Classification:**
     * `decision_tree.ipynb`: Application and Interpretability.
     * `decision_tree.py`: Algorithm implementation.
@@ -15,6 +15,7 @@ Description of existing codes.
     * `.ipynb`: 
     * `.ipynb`: 
 * **Clustering:**
+    * `.ipynb`: 
     * `.ipynb`: 
     * `.ipynb`: 
     * `.ipynb`: 
